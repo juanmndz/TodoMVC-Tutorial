@@ -1,6 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { render } from 'react-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 import 'todomvc-app-css/index.css'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from './containers/App';
+import reducer from './reducers'
+
+const store = createStore(reducer)
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
